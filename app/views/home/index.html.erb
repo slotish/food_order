@@ -8,20 +8,49 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#"><%= image_tag('RB.png', width: '50', height: '50', class: 'img-circle') %></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li> Witaj: <%= current_user.name %> - <%= image_tag(@auth['info']['image'], width: '50', height: '50', class: 'img-circle') %> 
-          <li> <%= link_to "Sign_Out", :sign_out, method: :delete %> </li>
+          <li class="nav-header">Witaj: <%= current_user.name %>  <%= image_tag(@auth['info']['image'], width: '50', height: '50', class: 'img-circle') %> 
+          <li class="nav-header"> <%= link_to "Wyloguj się", :sign_out, method: :delete %></li>
         <% else %>
           <li> <%= link_to "auth/facebook" do %> <%= image_tag('facebook.png', width: '50', height: '50', class: 'img-circle') %> <% end %>
-          </li>   
+          </li>
+           <li> <%= link_to "auth/github" do %> <%= image_tag('github.png', width: '50', height: '50', class: 'img-circle') %> <% end %>
+          </li>      
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
+<div class="container">
+<% unless current_user %>
+	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<h1> Zaloguj się przy pomocy facebooka lub githuba! </h1>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+	</div>
+<% else %>
+	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+		<%= image_tag("ruby.png", class: "img-responsive img-ruby") %>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<h1> Witaj w naszym serwisie <%= current_user.name %> </h1>
+
+		<p class="greeting-message">
+		FIND YOUR CULINARY GEM WITH BEAUTIFAL AURELIA :)
+		</p>
+		<input class="btn btn-default btn-greeting center-block" type="button" value="Dalej!">
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+		<%= image_tag("aurelia.png", class: "img-responsive img-aurelia") %>
+	</div>
+
+<% end %>
+</div>
