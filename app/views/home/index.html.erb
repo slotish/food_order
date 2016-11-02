@@ -42,15 +42,68 @@
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 		<h1> Witaj w naszym serwisie <%= current_user.name %> </h1>
-
 		<p class="greeting-message">
-		FIND YOUR CULINARY GEM WITH BEAUTIFAL AURELIA :)
+		  FIND YOUR CULINARY GEM WITH BEAUTIFUL AURELIA :)
 		</p>
-		<input class="btn btn-default btn-greeting center-block" type="button" value="Dalej!">
 	</div>
 	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 		<%= image_tag("aurelia.png", class: "img-responsive img-aurelia") %>
 	</div>
-
 <% end %>
+</div>
+
+<div class="container">
+<%#= form_for @order, url: {action: "create"}, html: {class: "order_form"} do |f| %>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h1>
+      Złóż zamowienie:
+    </h1>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <p>
+      Wybierz lokal
+    </p>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <%= text_field_tag(:restaurant) %>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <p>
+      Wybierz danie:
+    </p>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <%= text_field_tag(:meal) %>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <p>
+      Wybierz ilość porcji:
+    </p> 
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <%= number_field(:product, :price, in: 1..40, step: 1) %>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <p>
+      Podaj łączną kwotę zamowienia:
+    </p>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <%= number_field(:total, :price, in: 1.0..40.0, step: 0.1) %>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <p>
+      Wyślij zamówienie:
+    </p>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <%#= submit "Create" %> <%= submit_tag("Wyślij") %>
+  </div>
+<%# end %>
+
 </div>
