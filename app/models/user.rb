@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+	belongs_to :order
+	
+
 	def self.sign_in_from_omniauth(auth)
 		find_by(provider: auth['provider'], uid: auth['uid']) || create_user_from_omniauth(auth)
 	end
@@ -11,5 +14,6 @@ class User < ApplicationRecord
 			name: auth['info']['name']
 		)
 	end
+
 	
 end
